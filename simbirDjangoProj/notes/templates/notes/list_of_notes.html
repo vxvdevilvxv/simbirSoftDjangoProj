@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Заметки
+{% endblock %}
+
+{% block content %}
+    {% if request.user.is_authenticated %}
+        {% for item in notes %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="media">
+                    <div class="media-body">
+                        <p class="card-text">{{ item.content }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-muted">
+                {{ item.created_at|date:"Y-m-d H:i" }}
+            </div>
+        </div>
+        {% endfor %}
+
+    {% else %}
+        <h1>Страница не найдена</h1>
+    {% endif %}
+{% endblock %}

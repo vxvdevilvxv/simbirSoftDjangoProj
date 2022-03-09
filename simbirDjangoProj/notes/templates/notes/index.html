@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Домашняя страница
+{% endblock %}
+{% block content %}
+    {% if request.user.is_authenticated %}
+        Количество заметок: {{ length }}
+    {% else %}
+        <h3>Notes</h3>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Добавить заметку
+{% endblock %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+    <h1>Добавить заметку</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-outline-primary">Отправить</button>
+    </form>
+{% else %}
+    <h1>Страница не найдена</h1>
+{% endif %}
+
+
+{% endblock %}
